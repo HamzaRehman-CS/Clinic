@@ -13,7 +13,7 @@ const types = {
   '.woff2': 'font/woff2'
 };
 
-http.createServer(async (req, res) => {
+export async function handler(req, res) {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     const target = pathname === '/' ? '/index.html' : pathname;
@@ -39,4 +39,11 @@ http.createServer(async (req, res) => {
     res.writeHead(404);
     res.end('Not found');
   }
-}).listen(3000, '127.0.0.1', () => console.log('Local: http://localhost:3000'));
+}
+
+export default handler;
+
+const PORT = process.env.PORT || 3000;
+if (!process.env.VERCEL) {
+  http.createServer(handler).listen(PORT, '127.0.0.1', () => console.log(`Local: http://localhost:${PORT}`));
+}

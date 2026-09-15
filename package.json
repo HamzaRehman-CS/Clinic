@@ -1,1 +1,13 @@
-{"name":"voss-medical","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"node server.mjs","start":"node server.mjs","check":"node --check dist/app.js && node --check dist/dna.js && node --check server.mjs"}}
+{
+  "name": "voss-medical",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check js/app.js && node --check js/dna.js && node --check dist/app.js && node --check dist/dna.js && node --check server.mjs && node --check build.mjs"
+  }
+}
